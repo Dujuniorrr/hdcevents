@@ -1,0 +1,23 @@
+* {
+    font-family: 'Roboto';
+    color: aliceblue;
+}
+
+body{
+    background-color: #212529;
+}
+#home-image-container{
+    background-image: url(/img/home.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 70vh;
+}
+
+#search-input {
+    height: 38px;
+}
+
+#title-search{
+    font-weight: 900;
+    font-size:  xx-large;
+}
