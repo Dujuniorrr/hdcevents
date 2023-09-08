@@ -8,9 +8,29 @@ Route::get('/', [EventController::class, 'index']);
 
 Route::get('evento/visualizar/{id}', [EventController::class, 'show']);
 
-Route::get('evento/adicionar', [EventController::class, 'create']);
+Route::get('evento/adicionar', [EventController::class, 'create'])->middleware('auth');
 
-Route::post('evento/salvar', [EventController::class, 'store']);
+Route::post('evento/salvar', [EventController::class, 'store'])->middleware('auth');
+
+Route::get('evento/editar/{id}', [EventController::class, 'edit'])->middleware('auth');
+
+Route::put('evento/atualizar/{id}', [EventController::class, 'update'])->middleware('auth');
+
+Route::delete('evento/deletar/{id}', [EventController::class, 'destroy'] )->middleware('auth');
+
+Route::post('evento/participar/{id}', [EventController::class, 'joinEvent'])->middleware('auth');
+
+Route::post('evento/sair/{id}', [EventController::class, 'leaveEvent'])->middleware('auth');
+
+Route::get('/dashboard', [EventController::class, 'dashboard'])->middleware('auth');
+
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified',
+// ])->group(function () {
+    
+// });
 
 
 /*
@@ -64,12 +84,3 @@ Route::post('evento/salvar', [EventController::class, 'store']);
 // });
 
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});

@@ -38,7 +38,8 @@
                 <div class="card-body border border-light">
                     <span class="" style="font-size: small"> {{ date('d/m/Y', strtotime($event->date)) }}</span>
                     <h5 class="card-title fw-bolder"> {{ $event->title }}</h5>
-                    <p class="card-text"> {{ $event->description }} </p>
+                    <p class="card-text"> {{ substr( $event->description, 0, 50) }} @if(strlen($event->description) > 50) ... @endif
+                    </p>
                     <a href="/evento/visualizar/{{ $event->id }}" class="btn btn-primary">Saber mais...</a>
                 </div>
             </div>
